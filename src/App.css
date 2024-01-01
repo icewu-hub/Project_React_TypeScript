@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+/* src/components/MainPage.css */
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}

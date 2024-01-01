@@ -1,0 +1,31 @@
+/* src/components/Navbar.css */
+
+nav {
+  background-color: #333;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end; /* Align items on the main axis (horizontal) */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffd700;
+}
