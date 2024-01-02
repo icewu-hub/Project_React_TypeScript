@@ -1,4 +1,3 @@
-// src/components/Posts.tsx
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
 
@@ -9,31 +8,89 @@ interface Post {
   body: string;
 }
 
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
+
 const Posts: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [searchUsername, setSearchUsername] = useState<string>("");
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        const data = await response.json();
-        setPosts(data);
+        const [postsResponse, usersResponse] = await Promise.all([
+          fetch("https://jsonplaceholder.typicode.com/posts"),
+          fetch("https://jsonplaceholder.typicode.com/users"),
+        ]);
+
+        const postsData = await postsResponse.json();
+        const usersData = await usersResponse.json();
+
+        setPosts(postsData);
+        setUsers(usersData);
+        setFilteredPosts(postsData);
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchPosts();
+    fetchData();
   }, []);
+
+  const getUserNameById = (userId: number): string => {
+    const user = users.find((user) => user.id === userId);
+    return user ? user.username : "Unknown User";
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchUsername(event.target.value);
+
+    const filtered = posts.filter((post) =>
+      getUserNameById(post.userId)
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  };
 
   return (
     <div>
-      <h1>Posts List</h1>
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Enter username"
+          value={searchUsername}
+          onInput={handleSearch}
+        />
+      </div>
       <div className="posts-container">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <div key={post.id} className="post-card">
+            <p className="post-author">{getUserNameById(post.userId)}</p>
             <h2 className="post-title">{post.title}</h2>
             <p className="post-body">{post.body}</p>
           </div>

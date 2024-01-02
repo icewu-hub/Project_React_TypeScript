@@ -6,6 +6,7 @@ import Albums from "./components/Albums";
 import Photos from "./components/Photos";
 import Posts from "./components/Posts";
 import Users from "./components/Users";
+import Todos from "./components/Todos";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/albums" element={<Albums />} />
           <Route path="/photos" element={<Photos />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/todos" element={<Todos />} />
         </Routes>
       </div>
     </Router>
