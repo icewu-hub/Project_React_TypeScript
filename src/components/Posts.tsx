@@ -1,4 +1,4 @@
-// src/App.tsx
+// src/components/Posts.tsx
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
 
@@ -9,7 +9,7 @@ interface Post {
   body: string;
 }
 
-const App: React.FC = () => {
+const Posts: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Posts;

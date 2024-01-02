@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Albums.css";
+
 interface Album {
   userId: number;
   id: number;
   title: string;
 }
 
-const Album: React.FC = () => {
+const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
 
   useEffect(() => {
@@ -46,4 +47,4 @@ const Album: React.FC = () => {
   );
 };
 
-export default Album;
+export default Albums;

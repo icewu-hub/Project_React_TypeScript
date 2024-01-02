@@ -1,3 +1,4 @@
+// src/components/Photos.tsx
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -12,7 +13,7 @@ interface Photo {
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const location = useLocation();
-  const { from } = location.state ?? { from: null }; // Provide a default value for 'from'
+  const { from } = location.state ?? { from: null };
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -20,7 +21,6 @@ const Photos: React.FC = () => {
         let apiUrl = "https://jsonplaceholder.typicode.com/photos";
 
         if (from !== null) {
-          // If 'from' is not null, fetch photos from a specific album
           apiUrl += `?albumId=${from}`;
         }
 
@@ -33,7 +33,7 @@ const Photos: React.FC = () => {
     };
 
     fetchPhotos();
-  }, [from]); // Include 'from' in the dependency array to re-run the effect when 'from' changes
+  }, [from]);
 
   return (
     <div>

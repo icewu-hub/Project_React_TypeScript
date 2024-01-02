@@ -1,4 +1,4 @@
-// src/App.tsx
+// src/components/Users.tsx
 import React, { useState, useEffect } from "react";
 //import "./Users.css";
 
@@ -26,7 +26,7 @@ interface User {
   };
 }
 
-const App: React.FC = () => {
+const Users: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
@@ -61,4 +61,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Users;

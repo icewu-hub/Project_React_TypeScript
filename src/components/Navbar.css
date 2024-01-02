@@ -4,7 +4,7 @@ nav {
   background-color: #333;
   padding: 15px;
   display: flex;
-  justify-content: flex-end; /* Align items on the main axis (horizontal) */
+  justify-content: flex-end;
 }
 
 ul {

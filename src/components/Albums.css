@@ -1,11 +1,11 @@
-/* Style for react-router Link component */
-/* This assumes you have a class named 'albums' for your navigation links */
+/* src/components/Albums.css */
+
 .albums {
   text-decoration: none;
-  color: #007bff; /* Change the color as needed */
+  color: #007bff;
   transition: color 0.3s ease-in-out;
 }
 
 .albums:hover {
-  color: #0056b3; /* Change the hover color as needed */
+  color: #0056b3;
 }

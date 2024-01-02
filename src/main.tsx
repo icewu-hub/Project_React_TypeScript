@@ -1,10 +1,10 @@
-// src/App.tsx
+// src/Main.tsx
 import React from "react";
 import Navbar from "./components/Navbar";
 import Posts from "./components/Posts";
-import "./App.css"; // Add any global styles if needed
+import "./App.css";
 
-const App: React.FC = () => {
+const Main: React.FC = () => {
   return (
     <div>
       <Navbar />
@@ -15,4 +15,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Main;
