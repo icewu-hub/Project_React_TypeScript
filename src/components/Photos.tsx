@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./Photos.css";
 
+// TODO: Go back to albums page and show all photos button when accessing from specific Album
+
 interface Photo {
   albumId: number;
   id: number;
@@ -72,7 +74,9 @@ const Photos: React.FC = () => {
       <div className="Photos-container">
         {photos.map((photo) => (
           <div key={photo.id} className="photo-card">
-            <p className="photo-author">{mapPhotoIdwWithUserName(photo.albumId)}</p>
+            <p className="photo-author">
+              {mapPhotoIdwWithUserName(photo.albumId)}
+            </p>
             <h2 className="photo-album">Album - {photo.albumId}</h2>
             <p className="photo-title">{photo.title}</p>
             <img src={photo.url} alt={photo.title} />
