@@ -9,37 +9,56 @@ interface Album {
   title: string;
 }
 
+interface User {
+  id: number;
+  name: string;
+  username: string;
+}
+
 const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/albums"
-        );
-        const data = await response.json();
-        setAlbums(data);
+        const [albumsResponse, usersResponse] = await Promise.all([
+          fetch("https://jsonplaceholder.typicode.com/albums"),
+          fetch("https://jsonplaceholder.typicode.com/users"),
+        ]);
+
+        const albumsData = await albumsResponse.json();
+        const usersData = await usersResponse.json();
+
+        setAlbums(albumsData);
+        setUsers(usersData);
       } catch (error) {
-        console.error("Error fetching Albums:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchAlbums();
   }, []);
 
+  const getUserNameById = (userId: number): string => {
+    const user = users.find((user) => user.id === userId);
+    return user ? user.username : "Unknown User";
+  };
+
   return (
     <div>
-      <h1>Albums List</h1>
+      <h1 className="albums-page-title">Albums</h1>
       <div className="Albums-container">
         {albums.map((album) => (
           <div key={album.id} className="album-card">
-            <h2 className="album-title">
-              {album.id} -
+            <p className="album-author">{getUserNameById(album.userId)}</p>
+            <h2 className="album-id">
               <Link className="Albums" to="/photos" state={{ from: album.id }}>
-                {album.title}
+                Album - {album.id}
               </Link>
             </h2>
+
+            <p className="album-title">{album.title}</p>
           </div>
         ))}
       </div>

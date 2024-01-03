@@ -1,0 +1,31 @@
+/* src/components/Users.css */
+
+.Users-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin-bottom: 30px; */
+}
+
+.user-card {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-title {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.user-info {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.Users-title {
+  text-align: center;
+}

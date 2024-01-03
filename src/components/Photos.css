@@ -1,22 +1,13 @@
-/* src/components/Albums.css */
+/* src/components/Photos.css */
 
-.albums {
-  text-decoration: none;
-  color: #007bff;
-  transition: color 0.3s ease-in-out;
-}
-
-.albums:hover {
-  color: #0056b3;
-}
-
-.Albums-container {
+.Photos-container {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.album-card {
+.photo-card {
   border: 2px solid #ddd;
   border-radius: 8px;
   margin: 10px;
@@ -25,19 +16,27 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.album-id {
-  font-size: 1.2em;
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.album-author {
+.photo-author {
   margin-top: 10px;
   color: rgb(58, 177, 102);
   text-align: center;
   font-weight: bold;
 }
 
-.albums-page-title {
+.photo-title {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.photo-album {
+  font-size: 1.2em;
   text-align: center;
+  margin-bottom: 8px;
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 8px;
 }

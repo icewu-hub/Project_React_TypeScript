@@ -1,6 +1,6 @@
 // src/components/Users.tsx
 import React, { useState, useEffect } from "react";
-//import "./Users.css";
+import "./Users.css";
 
 interface User {
   id: number;
@@ -47,13 +47,15 @@ const Users: React.FC = () => {
 
   return (
     <div>
-      <h1>Users List</h1>
+      <h1 className="Users-title">Users List</h1>
       <div className="Users-container">
         {users.map((user) => (
           <div key={user.id} className="user-card">
             <h2 className="user-title">
-              {user.id} - {user.name}
+              {user.id} - {user.username}
             </h2>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
           </div>
         ))}
       </div>

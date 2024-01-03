@@ -1,6 +1,7 @@
 // src/components/Photos.tsx
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import "./Photos.css";
 
 interface Photo {
   albumId: number;
@@ -10,8 +11,22 @@ interface Photo {
   url: string;
 }
 
+interface Album {
+  userId: number;
+  id: number;
+  title: string;
+}
+
+interface User {
+  id: number;
+  name: string;
+  username: string;
+}
+
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [albums, setAlbums] = useState<Album[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const location = useLocation();
   const { from } = location.state ?? { from: null };
 
@@ -24,9 +39,20 @@ const Photos: React.FC = () => {
           apiUrl += `?albumId=${from}`;
         }
 
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setPhotos(data);
+        const [photosResponse, albumsResponse, usersResponse] =
+          await Promise.all([
+            fetch(apiUrl),
+            fetch("https://jsonplaceholder.typicode.com/albums"),
+            fetch("https://jsonplaceholder.typicode.com/users"),
+          ]);
+
+        const albumsData = await albumsResponse.json();
+        const usersData = await usersResponse.json();
+        const photosData = await photosResponse.json();
+
+        setAlbums(albumsData);
+        setUsers(usersData);
+        setPhotos(photosData);
       } catch (error) {
         console.error("Error fetching Photos:", error);
       }
@@ -35,15 +61,20 @@ const Photos: React.FC = () => {
     fetchPhotos();
   }, [from]);
 
+  const mapPhotoIdwWithUserName = (albumId: number): string => {
+    const album = albums.find((album) => album.id === albumId);
+    const user = users.find((user) => user.id === album?.userId);
+    return user ? user.username : "Unknown User";
+  };
+
   return (
     <div>
-      <h1>Photos List</h1>
       <div className="Photos-container">
         {photos.map((photo) => (
           <div key={photo.id} className="photo-card">
-            <h2>
-              Album - {photo.albumId} - {photo.title}
-            </h2>
+            <p className="photo-author">{mapPhotoIdwWithUserName(photo.albumId)}</p>
+            <h2 className="photo-album">Album - {photo.albumId}</h2>
+            <p className="photo-title">{photo.title}</p>
             <img src={photo.url} alt={photo.title} />
           </div>
         ))}
