@@ -1,37 +1,9 @@
 // src/components/Todos.tsx
 import React, { useState, useEffect } from "react";
 import "./Todos.css";
+import { Todo } from "../interfaces/Todo";
+import { User } from "../interfaces/User";
 
-interface Todo {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
 
 const Todos: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);

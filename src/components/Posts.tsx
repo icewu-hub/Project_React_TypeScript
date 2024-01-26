@@ -1,36 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
+import { Post } from "../interfaces/Post";
+import { User } from "../interfaces/User";
 
 const Posts: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);

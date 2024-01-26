@@ -2,18 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Albums.css";
-
-interface Album {
-  userId: number;
-  id: number;
-  title: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-}
+import { Album } from "../interfaces/Album";
+import { User } from "./User";
 
 const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);

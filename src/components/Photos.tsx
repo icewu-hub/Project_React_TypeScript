@@ -2,28 +2,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./Photos.css";
+import { Photo } from "../interfaces/Photo";
+import { Album } from "../interfaces/Album";
+import { User } from "../interfaces/User";
 
-// TODO: Go back to albums page and show all photos button when accessing from specific Album
-
-interface Photo {
-  albumId: number;
-  id: number;
-  title: string;
-  thumbnailUrl: string;
-  url: string;
-}
-
-interface Album {
-  userId: number;
-  id: number;
-  title: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-}
 
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
