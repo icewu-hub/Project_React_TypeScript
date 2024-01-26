@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Albums.css";
 import { Album } from "../interfaces/Album";
-import { User } from "./User";
+import { User } from "../interfaces/User";
 
 const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
