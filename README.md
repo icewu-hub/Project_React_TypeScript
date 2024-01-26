@@ -47,3 +47,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 https://jsonplaceholder.typicode.com/
+
+npm install react-scripts --save
