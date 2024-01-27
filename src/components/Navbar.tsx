@@ -32,11 +32,11 @@ const Navbar: React.FC = () => {
             Users
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link className="nav-link" to="/admin">
             Admin
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
